@@ -310,8 +310,9 @@ build_ievm() {
     archive=${archive:-$def_archive}
     unit=${unit:-"11"}
     local ova=`basename "${archive/_/ - }" .zip`.ova
-    local url="http://virtualization.modern.ie/vhd/IEKitV1_Final/VirtualBox/OSX/${archive}"
-    
+    local mirror="http://virtualization.modern.ie/vhd/IEKitV1_Final/VirtualBox/OSX"
+    local url="${IEVMS_MIRROR:-$mirror}/${archive}"
+
     log "Checking for existing OVA at ${ievms_home}/${ova}"
     if [[ ! -f "${ova}" ]]
     then
